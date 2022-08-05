@@ -5,5 +5,6 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 `;
 export default StyledMain;

@@ -8,5 +8,9 @@ const StyledCard = styled.div`
   font-size: 1rem;
   width: 200px;
   height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 export default StyledCard;

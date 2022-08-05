@@ -4,7 +4,7 @@ import StyledMain from "../Components/StyledMain";
 import StyledCard from "../Components/Card/StyledCard";
 import { getAllCards } from "../DB/dwCards";
 import StyledEditButton from "../Components/Card/StyledEditButton";
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const cards = await getAllCards();
   return {
     props: { cards },
@@ -23,6 +23,7 @@ export default function Home({ cards }) {
             <StyledCard key={card.id}>
               <p>Topic : {card.content}</p>
               <p>Creator:{card.creator} </p>
+              <StyledEditButton>Edit</StyledEditButton>
             </StyledCard>
           );
         })}
