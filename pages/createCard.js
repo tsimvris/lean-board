@@ -1,13 +1,32 @@
-import Head from "next/head";
+// Import Styled Components
+import Header from "../Components/LayoutComponents/Header";
 import StyledSubmitButton from "../Components/form/StyledSubmit";
 import StyledInput from "../Components/form/StyledInputs";
 import StyledTextArea from "../Components/form/StyledTextArea";
 import StyledForm from "../Components/form/StyledForm";
 import StyledCancelButton from "../Components/form/StyledCancelButton";
+// Import Dependecies and Libraries
 import Link from "next/link";
-import Header from "../Components/LayoutComponents/Header";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Home() {
+  const [content, setContent] = useState("");
+  const [creator, setCreator] = useState("");
+
+  const router = useRouter();
+  async function formSubmit(event) {
+    event.preventDefault();
+    const response = await fetch("./api/card/create", {
+      method: "POST",
+      body: JSON.stringify({
+        content: content,
+        creator: creator,
+      }),
+    });
+    router.push("/");
+  }
   return (
     <>
       <Head>
@@ -15,13 +34,25 @@ export default function Home() {
       </Head>
       <Header />
 
-      <StyledForm>
-        <StyledTextArea placeholder="Content" rows={6} cols={30} />
+      <StyledForm onSubmit={formSubmit}>
+        <StyledTextArea
+          placeholder="Content"
+          rows={6}
+          cols={30}
+          value={content}
+          onChange={(event) => {
+            setContent(event.target.value);
+          }}
+        />
 
-        <StyledInput placeholder="Creator" />
-        <Link href="/">
-          <StyledSubmitButton>Submit</StyledSubmitButton>
-        </Link>
+        <StyledInput
+          placeholder="Creator"
+          value={creator}
+          onChange={(event) => {
+            setCreator(event.target.value);
+          }}
+        />
+        <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
         <Link href="/">
           <StyledCancelButton>Cancel</StyledCancelButton>
         </Link>
