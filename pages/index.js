@@ -1,12 +1,12 @@
 import Head from "next/head";
-import Layout from "../Components/Layout";
+import Header from "../Components/LayoutComponents/Header";
 export default function Home() {
   return (
     <>
       <Head>
         <title>Lean Board</title>
       </Head>
-      <Layout />
+      <Header />
     </>
   );
 }

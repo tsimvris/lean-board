@@ -8,6 +8,7 @@ export default function Header() {
       <Link href="/createCard">
         <StyledButton>Add new Card</StyledButton>
       </Link>
+      <h1>Lean Board</h1>
     </StyledHeader>
   );
 }
