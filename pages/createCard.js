@@ -18,6 +18,7 @@ export default function Home() {
   const router = useRouter();
   async function formSubmit(event) {
     event.preventDefault();
+    router.push("/");
     const response = await fetch("./api/card/create", {
       method: "POST",
       body: JSON.stringify({
@@ -25,7 +26,6 @@ export default function Home() {
         creator: creator,
       }),
     });
-    router.push("/");
   }
   return (
     <>
