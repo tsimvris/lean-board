@@ -1,11 +1,11 @@
 import { dbConnect } from "./dbConnect";
 import modelCard from "./model";
-export const downloadCards = async () => {
+export default async function downloadCards() {
   await dbConnect();
 
-  const cards = await downloadCards.find();
+  const cards = await modelCard.find();
 
   return cards.map(({ creator, content }) => {
     return { content, creator };
   });
-};
+}

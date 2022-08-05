@@ -11,5 +11,6 @@ const StyledHeader = styled.header`
   padding: 10px 30px;
   align-items: center;
   flex-direction: row;
+  margin-bottom: 130px;
 `;
 export default StyledHeader;
