@@ -1,14 +1,13 @@
 import styled from "styled-components";
-const StyledForm = styled.form`
+const StyledTextArea = styled.textarea`
   border: none;
   padding: 8px 20px;
   border-radius: 999px;
+  background-color: white;
+  color: #282a36;
   font-size: 1rem;
   align-self: center;
+  text-align: center;
   margin: 5px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
-export default StyledForm;
+export default StyledTextArea;
