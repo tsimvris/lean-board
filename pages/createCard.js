@@ -5,6 +5,7 @@ import StyledInput from "../src/Components/form/StyledInputs";
 import StyledTextArea from "../src/Components/form/StyledTextArea";
 import StyledForm from "../src/Components/form/StyledForm";
 import StyledCancelButton from "../src/Components/form/StyledCancelButton";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -23,7 +24,9 @@ export default function Home() {
 
         <StyledInput placeholder="Creator" />
         <StyledSubmitButton>Submit</StyledSubmitButton>
-        <StyledCancelButton>Cancel</StyledCancelButton>
+        <Link href="/">
+          <StyledCancelButton>Cancel</StyledCancelButton>
+        </Link>
       </StyledForm>
     </>
   );
