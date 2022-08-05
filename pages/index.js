@@ -19,8 +19,6 @@ export default function Home({ cards }) {
       <Header />
       <StyledMain>
         {cards.map((card) => {
-          console.log(card);
-
           return (
             <StyledCard key={card.id}>
               <p>Topic : {card.content}</p>
