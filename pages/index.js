@@ -3,6 +3,7 @@ import Header from "../Components/LayoutComponents/Header";
 import StyledMain from "../Components/StyledMain";
 import StyledCard from "../Components/Card/StyledCard";
 import { getAllCards } from "../DB/dwCards";
+import StyledEditButton from "../Components/Card/StyledEditButton";
 export async function getStaticProps() {
   const cards = await getAllCards();
   return {
