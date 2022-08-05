@@ -1,11 +1,17 @@
 import { dbConnect } from "./dbConnect";
 import modelCard from "./model";
-export default async function downloadCards() {
+
+export async function getCardbyId(newId) {
   await dbConnect();
+  const card = await modelCard.findById(newId);
+  const { id, creator, content } = card;
+  return { id, creator, content };
+}
 
-  const cards = await modelCard.find();
-
-  return cards.map(({ creator, content }) => {
-    return { content, creator };
+export async function getAllCards() {
+  await dbConnect();
+  const allCards = await modelCard.find();
+  return allCards.map(({ id, creator, content }) => {
+    return { id, creator, content };
   });
 }
