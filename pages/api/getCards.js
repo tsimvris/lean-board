@@ -7,5 +7,10 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     const card = getCardbyId(id);
     response.status(200).json(card);
+  } else if (request.method === "PUT") {
+    const data = JSON.parse(request.body);
+    const card = await Card.findByIdAndUpdate(id, data, {
+      new: true,
+    });
   }
 }
