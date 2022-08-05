@@ -1,10 +1,13 @@
 import StyledHeader from "./StyledHeader";
 import StyledButton from "./StyledButton";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <StyledHeader>
-      <StyledButton>Add new Card</StyledButton>
+      <Link href="/createCard">
+        <StyledButton>Add new Card</StyledButton>
+      </Link>
     </StyledHeader>
   );
 }
