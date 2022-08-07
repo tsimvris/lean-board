@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const cardSchema = new Schema({
   creator: { type: String, required: true },
   content: { type: String, required: true },
+  editMode: { type: Boolean, required: true },
 });
 
 const modelCard = mongoose.models.Card || mongoose.model("Card", cardSchema);

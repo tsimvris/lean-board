@@ -9,10 +9,16 @@ export default async function handler(request, response) {
       const card = await modelCard.create({
         content: daten.content,
         creator: daten.creator,
+        editMode: false,
       });
       response.status(200).json({ message: "Card Created" });
     } catch (error) {
       console.log(error.message);
     }
+  } else if (request.method === "PUT") {
+    const data = JSON.parse(request.body);
+    const card = await Card.findByIdAndUpdate(id, data, {
+      new: true,
+    });
   }
 }

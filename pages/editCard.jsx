@@ -12,18 +12,18 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 
 export default function Home() {
-  const [content, setContent] = useState("");
-  const [creator, setCreator] = useState("");
+  const [content, setContent] = useState(content);
+  const [creator, setCreator] = useState(creator);
 
   const router = useRouter();
   async function formSubmit(event) {
     event.preventDefault();
     const response = await fetch("./api/card/create", {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify({
         content: content,
         creator: creator,
-        editMode: false,
+        editMode: true,
       }),
     });
     router.push("/");
@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Create New Card</title>
+        <title>Edit Card</title>
       </Head>
       <Header />
 
@@ -53,7 +53,7 @@ export default function Home() {
             setCreator(event.target.value);
           }}
         />
-        <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+        <StyledSubmitButton type="submit">Save</StyledSubmitButton>
         <Link href="/">
           <StyledCancelButton>Cancel</StyledCancelButton>
         </Link>

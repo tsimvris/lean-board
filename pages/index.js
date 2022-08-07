@@ -4,7 +4,7 @@ import StyledMain from "../Components/StyledMain";
 import StyledCard from "../Components/Card/StyledCard";
 import { getAllCards } from "../DB/dwCards";
 import StyledEditButton from "../Components/Card/StyledEditButton";
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps() {
   const cards = await getAllCards();
@@ -14,15 +14,8 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ cards }) {
-  const [editMode, setEditMode] = useState(false);
-  const [cardse, setCards] = useState(...cards);
-  function toggleEditMode() {
-    if (editMode) {
-      setEditMode(false);
-    } else {
-      setEditMode(true);
-    }
-  }
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -33,14 +26,16 @@ export default function Home({ cards }) {
         {cards.map((card) => {
           return (
             <StyledCard key={card.id}>
-              <p>Topic : {card.content}</p>
-              <p>Creator:{card.creator} </p>
+              Topic :{card.content}
+              <br />
+              Creator:
+              {card.creator}
               <StyledEditButton
                 onClick={() => {
-                  toggleEditMode();
+                  router.push("/editCard");
                 }}
               >
-                {editMode ? "edit" : "save"}
+                Edit
               </StyledEditButton>
             </StyledCard>
           );
