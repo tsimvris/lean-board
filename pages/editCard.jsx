@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { getCardbyId } from "../db/dwCards";
 
 export default function Home() {
   const [content, setContent] = useState(content);
